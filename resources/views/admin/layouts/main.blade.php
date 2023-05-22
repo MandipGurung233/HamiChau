@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="{{asset('admin/dist/css/adminlte.min.css')}}">
 </head>
 
-
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
     <!-- Navbar -->
@@ -67,17 +66,17 @@
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
-              <div class="media">
-                <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Brad Diesel
-                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">Call me whenever you can...</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                <div class="media">
+                  <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                  <div class="media-body">
+                    <h3 class="dropdown-item-title">
+                      Brad Diesel
+                      <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                    </h3>
+                    <p class="text-sm">Call me whenever you can...</p>
+                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                  </div>
                 </div>
-              </div>
               <!-- Message End -->
             </a>
             <div class="dropdown-divider"></div>
@@ -191,7 +190,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="/campaings" class="nav-link">
+              <a href="/adminCampaings" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Campaings
@@ -203,6 +202,30 @@
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Payment Details
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/subscription" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Subscription
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/shop-product" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Products
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/logout" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Logout
                 </p>
               </a>
             </li>
@@ -250,5 +273,4 @@
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="{{asset('admin/dist/js/pages/dashboard3.js')}}"></script>
 </body>
-
 </html>

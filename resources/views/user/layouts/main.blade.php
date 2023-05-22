@@ -1,3 +1,10 @@
+<?php
+
+use App\Models\Category;
+$categories = Category::all();
+use Illuminate\Support\Facades\Auth;
+?>
+
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -49,23 +56,62 @@
                                 </button>
                             </div>
                         </div>
+
+                        
+
                         <div class="account-login">
+                            @if(auth()->user())
+                                <?php 
+                                    $name = Auth::user()->name; 
+                                ?>
+                                
+                                <div class="accounts-login dropdown show">
+                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{$name}} 
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a href="/userDashboard" target="_blank">
+                                            <span>
+                                                Dashboard
+                                            </span>
+                                        </a> <br>
+
+                                        <a href="/login" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <span>
+                                                Logout
+                                            </span>
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form> 
+                                       
+                                                        
+                                    </div>
+                                </div>
+
+                            @else
+                          
                             <div class="accounts-login">
                                 <a href="/login"><span>Login</span></a>
                             </div>
                             <div class="accounts-login">
                                 <a href="/register"><span>Register</span></a>
                             </div>
+                            @endif
                         </div>
+
+
                         <div class="contacts-top">
                             <div class="contacts-supports">
                                 <span class="spprt-phone">
                                     <i class="fa fa-phone"></i>
-                                    01973833508
+                                    9811070080
                                 </span>
                                 <span class="support-email">
                                     <i class="fa fa-envelope"></i>
-                                    admin@bootexperts.com
+                                    hamichau658@gmail.com
                                 </span>
                             </div>
                         </div>
@@ -73,55 +119,42 @@
                 </div>
             </div>
         </div>
+    
         <div class="header-bottom" id="sticker">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-3">
                         <div class="logo">
-                            <a href="index.html"><img src="img/logo.png" alt=""></a>
+                            <a href="index.html"><img src="img/logo.png" alt="">Ḩamiℭhau</a>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-9 col-sm-9 hidden-xs">
                         <div class="main-menu">
                             <nav>
                                 <ul>
-                                    <li class="active parent">
+                                    <li class="active">
                                         <a href="/">Home</a>
                                     </li>
                                     <li><a href="/cause">Causes</a></li>
-                                    <li><a href="portfolio.html">Portfolio</a></li>
+                                    <li><a href="/shopping">Shop</a></li>
                                     <li><a href="/blog">Blog</a></li>
                                     <li class="parent">
-                                        <a href="#">Pages</a>
+                                        <a href="#">Category</a>
+
                                         <div class="mega-menu">
+                                            @foreach($categories as $category)
                                             <span>
-                                                <a class="mm-title" href="#">page set 1</a>
-                                                <a href="shopping-cart.html">Cart</a>
-                                                <a href="shop-leftsidebar.html">Shop left sidebar</a>
-                                                <a href="shop-rightsidebar.html">Shop right sidebar</a>
-                                                <a href="shop-list.html">Shop list</a>
-                                                <a href="shop-fullwidth.html">Shop fullwidth</a>
+                                                <a class="mm-title" href="/category/{{$category->id}}">{{$category->category_name}}</a>
                                             </span>
-                                            <span>
-                                                <a class="mm-title" href="#">page set 2</a>
-                                                <a href="blog-details.html">Blog details</a>
-                                                <a href="checkout.html">Checkout</a>
-                                                <a href="contact-us.html">Contact us</a>
-                                                <a href="gallery.html">Gallery</a>
-                                                <a href="my-account.html">My account</a>
-                                            </span>
-                                            <span>
-                                                <a class="mm-title" href="#">page set 3</a>
-                                                <a href="services.html">Services</a>
-                                                <a href="single-product.html">Single product</a>
-                                                <a href="team-member.html">Team member</a>
-                                                <a href="wishlist.html">Wishlist</a>
-                                                <a href="404.html">404</a>
-                                            </span>
+                                            @endforeach
+
                                         </div>
+
+
                                     </li>
-                                    <li><a href="#"><span class="donate-tdy">Donate Today!</span></a></li>
-                                </ul>
+                                    <li class="blink"><span >Donate Today!</span></a></li>
+                         
+                                   
                             </nav>
                         </div>
                     </div>
@@ -193,7 +226,7 @@
 
     @yield('content')
     <!-- footer-area start -->
-    <footer class="footer-area">
+    <footer class="footer-area" style="min-height: 100vh;">
         <div class="copyright">
             <div class="container">
                 <div class="row">

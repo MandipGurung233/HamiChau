@@ -7,12 +7,6 @@
             <div class="col-sm-6">
                 <h1 class="m-0">Dashboard v3</h1>
             </div><!-- /.col -->
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/create_campaign" class="btn btn-primary">Add Campaign</a></li>
-                
-                </ol>
-            </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
@@ -28,6 +22,8 @@
             <th>Campaing Goal</th>
             <th>Campaing Category</th>
             <th>Campaing Total Amount Collected</th>
+            <th>Document</th>
+            <th>Status</th>
             <th>ACtion</th>
         </thead>
 
@@ -38,11 +34,14 @@
                 <td>{{$campaing->campaing_goal}}</td>
                 <td>{{$campaing->category['category_name']}}</td>
                 <td>{{$campaing->campaing_total_amount_collected}}</td>
-                <td><a href="/edit_campaing/{{$campaing->id}}">Edit</a> 
+                <td>{{$campaing->documents}} <a href="/view_campaing/{{$campaing->id}}" target="_blank">View</a>  </td>
+                <td>{{$campaing->status}}</td>
+                <td><a href="/approve_campaing/{{$campaing->id}}" >Approve</a> 
                 <a href="/delete_campaign/{{$campaing->id}}">Delete</a>
             </td>
             </tr>
             @endforeach
+            
         </tbody>
     </table>
 </div>

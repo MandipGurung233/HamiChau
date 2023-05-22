@@ -15,5 +15,8 @@ class Campaing extends Model
     public function payment(){
         return $this->hasMany(Payment::class);
     }
+    public function comment(){
+        return $this->hasMany(Comment::class);
+    }
 }
 

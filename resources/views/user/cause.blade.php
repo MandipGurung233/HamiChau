@@ -4,16 +4,21 @@
     <div class="container">
         <div class="row">
             @foreach ($campaings as $campaing)
+            @if ($campaing->status == 'approved')
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="single-cause-list res">
                     <div class="single-cause-img img-hvr-effect">
-                        <a class="venobox" data-gall="myGallery" href=""><img src="{{ asset('uploads/campaing/'.$campaing->campaing_image) }}" alt="image alt" /></a>
+                        <a class="venobox" data-gall="myGallery" href="/campaing-details/{{$campaing->id}}"><img src="{{ asset('uploads/campaing/'.$campaing->campaing_image) }}" alt="image alt" /></a>
                     </div>
                     <div class="cause-lists-desc">
                         <div class="cause-prgrs-br">
                             <div class="progress">
-                                <div class="progress-bar wow fadeInLeft" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;" data-wow-duration="1.5s" data-wow-delay="1.5s">
-                                    <span>70%</span>
+                                <?php
+                                    $inPercent =  $campaing->campaing_total_amount_collected/ ($campaing->campaing_goal / 100 );
+                
+                                ?>
+                                <div class="progress-bar wow fadeInLeft" role="progressbar" aria-valuenow={{$inPercent}} aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $inPercent?>% !important;"  data-wow-duration="1.5s" data-wow-delay="1.5s">
+                                    <span>{{$inPercent}}%</span>
                                 </div>
                             </div>
                             <div class="prgrs-collected-amnt">
@@ -27,14 +32,14 @@
                         </div>
                         <div class="cause-list-desig text-center">
                             <div class="cause-desig-title">
-                                <h3><a href="#">{{ $campaing->campaing_name}}</a></h3>
+                                <h3><a href="/campaing-details/{{$campaing->id}}">{{ $campaing->campaing_name}}</a></h3>
                             </div>
                             <div class="cause-desig-title-desc">
                                 <p>{{ $campaing->campaing_description}}</p>
                             </div>
                             <div class="cause-dnt">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{$campaing->id}}">
-                                    Launch demo modal
+                                    Donate Now
                                 </button>
                             </div>
                         </div>
@@ -67,6 +72,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             @endforeach
 
         </div>

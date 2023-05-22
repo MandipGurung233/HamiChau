@@ -17,9 +17,11 @@ class CreateCampaingsTable extends Migration
             $table->id();
             $table->string('campaing_image');
             $table->double('campaing_goal');
-            $table->double('campaing_total_amount_collected');
+            $table->double('campaing_total_amount_collected')->nullable();
             $table->text('campaing_name');
             $table->text('campaing_description');
+            $table->string('documents');
+            $table->string('status')->default('pending');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
 

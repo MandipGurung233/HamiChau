@@ -502,15 +502,40 @@ span.donate-tdy {
 	opacity: 0;
 	padding: 20px;
 	position: absolute;
-	right: -57px;
+	right: 0px;
 	text-align: left;
 	top: 100%;
-	width: 900px;
+	width: 830px;
 }
+
+li.parent {
+    margin-right: 10px;
+}
+
+/*blinking animation*/
+.blink{
+
+    font-size: 15px;
+    line-height: 24px;
+    margin: 0px !important;
+    padding: 5px !important;
+    margin-left: 15px;
+    min-height: 40px;
+    background: #ed1556 none repeat scroll 0 0;
+    color: #fff;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    animation: blinkingBackground 2s infinite;
+}
+@keyframes blinkingBackground{
+    100%	        { background-color: rgb(74, 183, 226);}
+}
+
+
 .mega-menu span {
 	float: left;
-	margin-right: 12px;
-	width: 215px;
+    margin-right: 5px;
+    width: 180px;
 }
 .mega-menu span a.mm-title {
     font-family: "Montserrat",sans-serif;

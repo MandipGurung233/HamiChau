@@ -1,5 +1,13 @@
 @extends('user.layouts.main')
 @section('content')
+<?php
+
+use App\Models\Campaing;
+
+$random_campaing = Campaing::inRandomOrder()->first();
+?>
+
+
 <!-- slider-area start -->
 <div class="slider-area">
     <div class="bend niceties preview-2">
@@ -18,7 +26,7 @@
                                 <img src="{{asset('user/img/slider/caption1_slider1.png')}}" alt="">
                             </div>
                             <div class="layer-1-2 wow slideInLeft" data-wow-duration="0.3s" data-wow-delay="0.6s">
-                                <img src="{{asset('img/slider/caption2_slider1.png')}}" alt="">
+                                <img src="{{asset('user/img/slider/caption2_slider1.png')}}" alt="">
                             </div>
                             <div class="layer-1-3 wow slideInRight" data-wow-duration="0.3s" data-wow-delay="0.3s">
                                 <img src="{{asset('user/img/slider/caption3_slider1.png')}}" alt="">
@@ -38,77 +46,45 @@
                     <div class="col-lg-12">
                         <div class="slider-content-2 hidden-xs">
                             <div class="layer-2-1 wow fadeInDown" data-wow-duration="0.3s" data-wow-delay="0s">
-                                <img src="img/slider/caption1_slider2.png" alt="">
+                                <img src="{{asset('user/img/slider/caption1_slider2.png')}}" alt="">
                             </div>
                             <div class="layer-2-2 wow flipInX" data-wow-duration="0.8s" data-wow-delay="0.3s">
-                                <img src="img/slider/caption2_slider2.png" alt="">
+                                <img src="{{asset('user/img/slider/caption2_slider2.png')}}" alt="">
                             </div>
                             <div class="layer-2-3 wow bounceInUp" data-wow-duration="0.6s" data-wow-delay="1.1s">
-                                <a class="stat" href="#"><img src="img/slider/caption4_slider1.png" alt=""></a>
+                                <a class="stat" href="#"><img src="{{asset('user/img/slider/caption4_slider1.png')}}" alt=""></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- direction 3 -->
+
         <div id="slider-direction-3" class="slider-direction slider-three">
             <div class="container slider-space">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="slider-content-3 text-right hidden-xs">
                             <div class="layer-3-1 wow fadeInLeftBig" data-wow-duration="0.7s" data-wow-delay="0s">
-                                <img src="img/slider/caption1_slider3.png" alt="">
+                                <img src="{{asset('user/img/slider/caption1_slider3.png')}}" alt="">
                             </div>
                             <div class="layer-3-2 wow bounceInRight" data-wow-duration="0.2s" data-wow-delay="0.7s">
-                                <img src="img/slider/caption2_slider3.png" alt="">
+                                <img src="{{asset('user/img/slider/caption2_slider3.png')}}" alt="">
                             </div>
                             <div class="layer-3-3 wow bounceInUp" data-wow-duration="0.6s" data-wow-delay="0.9s">
-                                <a class="stat" href="#"><img src="img/slider/caption4_slider1.png" alt=""></a>
+                                <a class="stat" href="#"><img src="{{asset('user/img/slider/caption4_slider1.png')}}" alt=""></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
     </div>
 </div>
 <!-- slider-area end -->
 <!-- urgent-cause-area start -->
-<section class="urgent-cause-area section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h2 class="section-title-white text-center">Urgent cause</h2>
-                <div class="urgent-cause-img img-hvr-effect">
-                    <a class="venobox" data-gall="myGallery" href="img/img_urgent.jpg"><img src="img/img_urgent.jpg" alt="image alt" /></a>
-                </div>
-                <div class="urgent-cause-prgrs-bar">
-                    <div class="progress">
-                        <div class="progress-bar wow fadeInLeft" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;" data-wow-duration="1.5s" data-wow-delay="1.5s">
-                            <span>70%</span>
-                        </div>
-                    </div>
-                    <div class="prgrs-collected-amnt">
-                        <span class="collected-txt">Collected:</span>
-                        <span class="collected-amnt">$14,080.00</span>
-                    </div>
-                    <div class="prgrs-goal-amnt pull-right">
-                        <span class="goal-txt">Goal:</span>
-                        <span class="goal-amnt">$20,000.00</span>
-                    </div>
-                </div>
-                <div class="actions-speaks-area text-center">
-                    <h3><a href="#">Actions speak louder than words!</a></h3>
-                    <p>Necessities local solutions cause, hack; human rights treatment Action Against</p>
-                    <div class="btn-dnt">
-                        <a href="#">Donate Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 <!-- urgent-cause-area end -->
 <!-- who-are-we-area -->
 <section class="who-are-we-area text-center">
@@ -133,48 +109,55 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h2 class="section-title-white text-center">Cause list</h2>
+                <h2 class="section-title-white text-center">Urgent Need</h2>
             </div>
         </div>
         <div class="row">
-        @foreach ($campaings as $campaing)
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-           
-                <div class="single-cause-list">
-                    <div class="single-cause-img img-hvr-effect">
-								<a class="venobox" data-gall="myGallery" href=""><img src="{{ asset('uploads/campaing/'.$campaing->campaing_image) }}" alt="image alt"/></a>
-                    </div>
-                   
-                    <div class="cause-lists-desc">
-                        <div class="cause-prgrs-br">
-                            <div class="progress">
-                                <div class="progress-bar wow fadeInLeft" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;" data-wow-duration="1.5s" data-wow-delay="1.5s">
-                                    <span>90%</span>
+            @foreach ($campaings as $campaing)
+            @if ($campaing->status == 'approved')
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                    <div class="single-cause-list" style="box-shadow:rgb(217 26 26 / 37%) 0px 4px 30px;">
+                        <div class="single-cause-img img-hvr-effect">
+                            <a class="venobox" data-gall="myGallery" href=""><img src="{{ asset('uploads/campaing/'.$campaing->campaing_image) }}" alt="image alt" /></a>
+                        </div>
+
+                        <div class="cause-lists-desc">
+                            <div class="cause-prgrs-br">
+                                <div class="progress">
+                                    <?php
+                                        $inPercent =  $campaing->campaing_total_amount_collected/ ($campaing->campaing_goal / 100 );
+                    
+                                    ?>
+                                    <div class="progress-bar wow fadeInLeft" role="progressbar" aria-valuenow={{$inPercent}} aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $inPercent?>% !important;"  data-wow-duration="1.5s" data-wow-delay="1.5s">
+                                        <span>{{$inPercent}}%</span>
+                                    </div>
+
+                                </div>
+                                <div class="prgrs-collected-amnt">
+                                    <span class="collected-txt">Collected:</span>
+                                    <span class="collected-amnt">{{ $campaing->campaing_total_amount_collected}}</span>
+                                </div>
+                                <div class="prgrs-goal-amnt pull-right">
+                                    <span class="goal-txt">Goal:</span>
+                                    <span class="goal-amnt">{{ $campaing->campaing_goal}}</span>
                                 </div>
                             </div>
-                            <div class="prgrs-collected-amnt">
-                                <span class="collected-txt">Collected:</span>
-                                <span class="collected-amnt">{{ $campaing->campaing_total_amount_collected}}</span>
-                            </div>
-                            <div class="prgrs-goal-amnt pull-right">
-                                <span class="goal-txt">Goal:</span>
-                                <span class="goal-amnt">{{ $campaing->campaing_goal}}</span>
-                            </div>
-                        </div>
-                        <div class="cause-list-desig text-center">
-                            <div class="cause-desig-title">
-                                <h3><a href="#">{{ $campaing->campaing_name}}</a></h3>
-                            </div>
-                            <div class="cause-desig-title-desc">
-                                <p>{{ $campaing->campaing_description}}</p>
-                            </div>
-                            <div class="cause-dnt">
-                                <a href="#">Donate Now</a>
+                            <div class="cause-list-desig text-center">
+                                <div class="cause-desig-title">
+                                    <h3><a href="/campaing-details/{{$campaing->id}}">{{ $campaing->campaing_name}}</a></h3>
+                                </div>
+                                <div class="cause-desig-title-desc">
+                                    <p>{{ $campaing->campaing_description}}</p>
+                                </div>
+                                <div class="cause-dnt">
+                                    <a href="#">Donate Now</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
             @endforeach
         </div>
     </div>
@@ -231,10 +214,11 @@
         </div>
         <div class="row csa-mt">
             <div class="charity-shop-carousel indicator-style">
+                @foreach($shops as $shop)
                 <div class="col-lg-12">
                     <div class="single-product">
                         <div class="product-img">
-                            <a href="#"><img src="img/products/x39-270x400.jpg" alt=""></a>
+                            <a href="#"><img src="{{ asset('uploads/product/'.$shop->product_image) }}" alt=""></a>
                             <div class="pro-label">
                                 <span class="product_label">New</span>
                             </div>
@@ -250,7 +234,7 @@
                             </div>
                         </div>
                         <div class="product-desc text-center">
-                            <h3><a href="#">Fusce aliquam variable – v1</a></h3>
+                            <h3><a href="/productPage/{{$shop->id}}">{{$shop->name}}</a></h3>
                             <div class="product-rating">
                                 <a href="#"><i class="fa fa-star"></i></a>
                                 <a href="#"><i class="fa fa-star"></i></a>
@@ -259,219 +243,15 @@
                                 <a href="#"><i class="fa fa-star"></i></a>
                             </div>
                             <span class="product-price">
-                                <span class="amount-one">$17.20</span>
+                                <span class="amount-one">${{$shop->actual_price}}</span>
                                 -
-                                <span class="amount-two">$18.20</span>
+                                <span class="amount-two">${{$shop->discount_price}}</span>
                             </span>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <div class="single-product">
-                        <div class="product-img">
-                            <a href="#"><img src="img/products/h04-270x400.jpg" alt=""></a>
-                            <div class="pro-label">
-                                <span class="product_label blue_label">16%</span>
-                            </div>
-                            <div class="product-actions">
-                                <div class="list-add-to-cart">
-                                    <button class="button">
-                                        <span>Add to Cart</span>
-                                    </button>
-                                </div>
-                                <div class="add-to-links">
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-link"></i></a>
-                                    <a data-toggle="modal" data-target="#productModal" href="#"><i class="fa fa-eye"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-desc text-center">
-                            <h3><a href="#">Fusce aliquam variable – v1</a></h3>
-                            <span class="product-price pro-mb">
-                                <span class="amount-one amnt-one">$50.00</span>
-                                <span class="amount-two amnt-two">$42.00</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="single-product">
-                        <div class="product-img">
-                            <a href="#"><img src="img/products/h07-270x400.jpg" alt=""></a>
-                            <div class="pro-label">
-                                <span class="product_label blue_label">4%</span>
-                            </div>
-                            <div class="product-actions">
-                                <div class="list-add-to-cart">
-                                    <button class="button">
-                                        <span>Buy product</span>
-                                    </button>
-                                </div>
-                                <div class="add-to-links">
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-link"></i></a>
-                                    <a data-toggle="modal" data-target="#productModal" href="#"><i class="fa fa-eye"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-desc text-center">
-                            <h3><a href="#">Navy blue center part leather</a></h3>
-                            <span class="product-price pro-mb">
-                                <span class="amount-one amnt-one">$230.00</span>
-                                <span class="amount-two amnt-two">$220.00</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="single-product">
-                        <div class="product-img">
-                            <a href="#"><img src="img/products/9-270x400.jpg" alt=""></a>
-                            <div class="pro-label">
-                                <span class="product_label">New</span>
-                            </div>
-                            <div class="product-actions">
-                                <div class="list-add-to-cart">
-                                    <a href="#">Select options</a>
-                                </div>
-                                <div class="add-to-links">
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-link"></i></a>
-                                    <a data-toggle="modal" data-target="#productModal" href="#"><i class="fa fa-eye"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-desc text-center">
-                            <h3><a href="#">Sander vasari white shirt – v1</a></h3>
-                            <span class="product-price pro-mb">
-                                <span class="amount-one">$17.99</span>
-                                -
-                                <span class="amount-two">$18.55</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="single-product">
-                        <div class="product-img">
-                            <a href="#"><img src="img/products/6-270x400.jpg" alt=""></a>
-                            <div class="pro-label">
-                                <span class="product_label blue_label">20%</span>
-                            </div>
-                            <div class="product-actions">
-                                <div class="list-add-to-cart">
-                                    <button class="button">
-                                        <span>Add to Cart</span>
-                                    </button>
-                                </div>
-                                <div class="add-to-links">
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-link"></i></a>
-                                    <a data-toggle="modal" data-target="#productModal" href="#"><i class="fa fa-eye"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-desc text-center">
-                            <h3><a href="#">Floral gold collar chunky</a></h3>
-                            <span class="product-price pro-mb">
-                                <span class="amount-one amnt-one">$100.00</span>
-                                <span class="amount-two amnt-two">$80.00</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="single-product">
-                        <div class="product-img">
-                            <a href="#"><img src="img/products/h11-270x400.jpg" alt=""></a>
-                            <div class="pro-label">
-                                <span class="product_label">New</span>
-                            </div>
-                            <div class="product-actions">
-                                <div class="list-add-to-cart">
-                                    <a href="#">View products</a>
-                                </div>
-                                <div class="add-to-links">
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-link"></i></a>
-                                    <a data-toggle="modal" data-target="#productModal" href="#"><i class="fa fa-eye"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-desc text-center">
-                            <h3><a href="#">Jil sander vasari white shirt – G1</a></h3>
-                            <span class="product-price pro-mb">
-                                <span class="amount-one">$80.50</span>
-                                -
-                                <span class="amount-two">$120.00</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="single-product">
-                        <div class="product-img">
-                            <a href="#"><img src="img/products/h12-270x400.jpg" alt=""></a>
-                            <div class="pro-label">
-                                <span class="product_label">New</span>
-                            </div>
-                            <div class="product-actions">
-                                <div class="list-add-to-cart">
-                                    <a href="#">Select options</a>
-                                </div>
-                                <div class="add-to-links">
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-link"></i></a>
-                                    <a data-toggle="modal" data-target="#productModal" href="#"><i class="fa fa-eye"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-desc text-center">
-                            <h3><a href="#">Navy blue center part leather – V1</a></h3>
-                            <span class="product-price pro-mb">
-                                <span class="amount-one">$250.00</span>
-                                -
-                                <span class="amount-two">$260.00</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="single-product">
-                        <div class="product-img">
-                            <a href="#"><img src="img/products/h13-270x400.jpg" alt=""></a>
-                            <div class="pro-label">
-                                <span class="product_label">New</span>
-                            </div>
-                            <div class="product-actions">
-                                <div class="list-add-to-cart">
-                                    <button class="button">
-                                        <span>Buy product</span>
-                                    </button>
-                                </div>
-                                <div class="add-to-links">
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-link"></i></a>
-                                    <a data-toggle="modal" data-target="#productModal" href="#"><i class="fa fa-eye"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-desc text-center">
-                            <h3><a href="#">Fusce aliquam variable – v1</a></h3>
-                            <div class="product-rating">
-                                <a href="#"><i class="fa fa-star"></i></a>
-                                <a href="#"><i class="fa fa-star"></i></a>
-                                <a href="#"><i class="fa fa-star-half-o"></i></a>
-                                <a href="#"><i class="fa fa-star-o"></i></a>
-                                <a href="#"><i class="fa fa-star-o"></i></a>
-                            </div>
-                            <span class="product-price">
-                                <span class="amount-one">$245.00</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+            
             </div>
         </div>
     </div>
@@ -721,16 +501,19 @@
                     <p>Suspendisse et tortor nec sem imperdiet auctor ultrices at nisl</p>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <div class="newslttr-email">
-                    <input type="text" placeholder="Put your email address here">
+            <form action="/subscribe" method="post">
+                @csrf
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="newslttr-email">
+                        <input type="text" name="email" placeholder="Put your email address here">
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                <div class="cause-search-btns newslttr-btn">
-                    <input type="submit" value="Subscribe">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <div class="cause-search-btns newslttr-btn">
+                        <input type="submit" value="Subscribe">
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </section>
